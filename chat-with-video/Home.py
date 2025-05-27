@@ -29,7 +29,7 @@ Use the sidebar to navigate between different pages:
 
 ### Additional Resources
 
-- [GitHub Repository](https://github.com/ojasskapre/langchain-apps/tree/main/chat-with-video) - Check out the source code on GitHub.
+- [GitHub Repository](https://github.com/aimaster-dev/langchain-agent/tree/main/chat-with-video) - Check out the source code on GitHub.
 """)
 
 st.image("process-video.png", caption="Video Processing Overview")

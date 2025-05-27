@@ -5,12 +5,15 @@ from langchain_pinecone import PineconeVectorStore
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
+from langchain_huggingface import HuggingFaceEmbeddings
 from prompts import generate_system_prompt, generate_user_prompt
+import torch
 
 import os
 
 load_dotenv()
 
+torch.classes.__path__ = []
 
 def split_transcription(transcription):
   """Split the transcription into multiple components."""
@@ -19,7 +22,8 @@ def split_transcription(transcription):
 
 def get_vectorstore():
   """Return a Pinecone vector store object."""
-  embeddings = OpenAIEmbeddings()
+  # embeddings = OpenAIEmbeddings()
+  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
   vectorstore = PineconeVectorStore(index_name=os.getenv("PINECONE_INDEX_NAME"), embedding=embeddings)
   return vectorstore
 
@@ -47,7 +51,7 @@ def format_docs(docs):
 
 def get_rag_chain(selected_videos):
   """Create a RAG chain for answering questions based on video content."""
-  llm = ChatOpenAI(model="gpt-3.5-turbo-1106")
+  llm = ChatOpenAI(model="gpt-4o-mini")
   vectorstore = get_vectorstore()
   retriever = vectorstore.as_retriever(search_kwargs={"filter": {"video_filename": {"$in": selected_videos}}})
 

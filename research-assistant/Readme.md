@@ -15,7 +15,7 @@ This project aims to create a research assistant using LangChain and OpenAI's GP
 1. Clone the repository
 
 ```bash
-git clone git@github.com:ojasskapre/langchain-apps.git
+git clone https://github.com/aimaster-dev/langchain-agent.git
 cd langchain-apps/research-assistant
 ```
 
@@ -46,10 +46,6 @@ Run the streamlit app
 ```bash
 streamlit run main.py
 ```
-
-## Demo
-
-[Watch the Demo Here](https://youtu.be/CtzieIgcaIA)
 
 ## Chains Explanation
 
@@ -169,8 +165,3 @@ Workflow:
 5. Display and Download: The generated report is displayed to the user, who can download it as a PDF.
 
 <img src="./research-assistant.png" width="500px" />
-
-## References
-
-- [Youtube Link](https://youtu.be/DjuXACWYkkU?si=_v1Yz0R9ygpTopP3)
-- [Prompts GitHub Link](https://github.com/assafelovic/gpt-researcher/blob/master/gpt_researcher/master/prompts.py)

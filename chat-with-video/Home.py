@@ -1,4 +1,7 @@
 import streamlit as st
+import os
+
+os.environ["STREAMLIT_SERVER_ENABLE_FILE_WATCHER"] = "false"
 
 st.set_page_config(layout="wide")
 st.title("Welcome to the Video Chat Application")

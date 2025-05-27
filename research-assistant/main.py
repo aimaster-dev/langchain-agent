@@ -19,7 +19,7 @@ SUMMARY_PROMPT = ChatPromptTemplate.from_template(SUMMARY_TEMPLATE)
 
 scrape_and_summarize_chain = RunnablePassthrough.assign(summary=RunnablePassthrough.assign(
   text=lambda x: scrape_text(x["url"])[:10000]
-) | SUMMARY_PROMPT | ChatOpenAI(model="gpt-3.5-turbo-1106") | StrOutputParser()) | (lambda x: f"URL: {x['url']}\n\nSummary: {x['summary']}")
+) | SUMMARY_PROMPT | ChatOpenAI(model="gpt-4o-mini") | StrOutputParser()) | (lambda x: f"URL: {x['url']}\n\nSummary: {x['summary']}")
 
 web_search_chain = RunnablePassthrough.assign(
   urls=lambda x: web_search(x["question"])
@@ -34,7 +34,7 @@ SEARCH_PROMPT = ChatPromptTemplate.from_messages(
   ]
 )
 
-search_question_chain = SEARCH_PROMPT | ChatOpenAI(model="gpt-3.5-turbo-1106", temperature=0) | StrOutputParser() | json.loads
+search_question_chain = SEARCH_PROMPT | ChatOpenAI(model="gpt-4o-mini", temperature=0) | StrOutputParser() | json.loads
 
 full_research_chain = search_question_chain | (lambda x: [{"question": q} for q in x]) | web_search_chain.map()
 
@@ -50,7 +50,7 @@ prompt = ChatPromptTemplate.from_messages(
 )
 
 chain = RunnablePassthrough.assign(
-  context = full_research_chain | flatten_list_of_list) | prompt | ChatOpenAI(model="gpt-3.5-turbo-1106") | StrOutputParser()
+  context = full_research_chain | flatten_list_of_list) | prompt | ChatOpenAI(model="gpt-4o-mini") | StrOutputParser()
 
 # results = chain.invoke(
 #   {

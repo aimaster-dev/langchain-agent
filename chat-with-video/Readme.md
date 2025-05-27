@@ -10,7 +10,7 @@ This repository contains a Streamlit application that allows users to interact w
 1. Clone the repository
 
 ```bash
-git clone git@github.com:ojasskapre/langchain-apps.git
+git clone https://github.com/aimaster-dev/langchain-agent.git
 cd langchain-apps/chat-with-video
 ```
 
@@ -43,8 +43,6 @@ streamlit run Home.py
 ```
 
 ## Demo
-
-[Watch the Demo Here](https://youtu.be/jAmMG8sjI5c)
 
 [Langsmith Trace](https://smith.langchain.com/public/966249c8-086b-47c7-9d34-71db94517ccc/r)
 
